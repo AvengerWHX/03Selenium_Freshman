@@ -15,7 +15,7 @@ try:
        <input id="kw" name="wd" class="s_ipt" value="" maxlength="255" autocomplete="off">
     '''
     # 1. id定位
-    input = driver.find_element_by_id('kw')
+    # input = driver.find_element_by_id('kw')
     # 2. name定位
     # input = driver.find_element_by_name('wd')
     # 3. class定位
@@ -39,7 +39,35 @@ try:
     # 7.4 使用逻辑运算符，如果一个属性不能唯一的区分一个元素，可以使用逻辑运算符同时查找多个属性
     # driver.find_element_by_xpath("//input[@id='kw' and @class='su']/span/input")
 
-    # 8. CSS定位
+    # 8. CSS定位  CSS定位可以较为灵活的选择控件的任意属性，一般情况下定位速度要比Xpath快。在CSS中可以使用元素的任意属性，只要这些属性可以唯一的标识这个元素
+    # 8.1class属性定位，.表示通过class属性定位
+    #input = driver.find_element_by_css_selector('.s_ipt')
+    # search_btn = driver.find_element_by_css_selector('.bg s_btn')
+    # 8.2id属性定位,#表示通过id属性定位
+    #input = driver.find_element_by_css_selector('#kw')
+    #search_btn = driver.find_element_by_css_selector('#su')
+    # 8.3通过标签名定位,存在重复率太大的问题
+    # driver.find_element_by_css_selector('input')
+    # 8.3.1通过父子关系定位
+    # driver.find_element_by_css_selector('span>input')
+    # 8.3.2通过属性定位
+    # driver.find_element_by_css_selector('[autocomplete=off]')
+    # driver.find_element_by_css_selector("[name='kw']")
+    # driver.find_element_by_css_selector("type='submit'")
+    # 8.3.3组合定位
+    # driver.find_element_by_css_selector('form.fm>span>input.s_ipt')
+    # driver.find_element_by_css_selector('from#form>span>input#kw')
+    # 9.By定位元素,在使用By之前需要将By类导入，from selenium.webdriver.common.by import By
+    driver.find_element(By.ID,'kw')
+    driver.find_element(By.NAME,'wd')
+    driver.find_element(By.CLASS_NAME,'s_ipt')
+    driver.find_element(By.TAG_NAME,'input')
+    driver.find_element(By.LINK_TEXT,'新闻')
+    driver.find_element(By.PARTIAL_LINK_TEXT,'新')
+    driver.find_element(By.XPATH,"//*[@class='bg s_btn']")
+    driver.find_element(By.CSS_SELECTOR,'span.bg s_btn_wr>input#su')
+
+
 
 
 
